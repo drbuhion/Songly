@@ -68,10 +68,15 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                         selectedFragment = new HomeFragment();
                         break;
                     case R.id.add:
-                        selectedFragment = new UploadFragment();
+                        //selectedFragment = new UploadFragment();
+                        Intent intent = new Intent(getApplicationContext(), UploadSong.class);
+                        startActivity(intent);
+                        finish();
                         break;
                     case R.id.search:
-                        selectedFragment = new SearchFragment();
+                        Intent intent2 = new Intent(getApplicationContext(), SearchSong.class);
+                        startActivity(intent2);
+                        finish();
                         break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

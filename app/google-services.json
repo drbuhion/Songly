@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "999172994485",
+    "project_id": "songly-b72f2",
+    "storage_bucket": "songly-b72f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999172994485:android:edc5039a9ed73e027555fc",
+        "android_client_info": {
+          "package_name": "com.mobdeve.s17.songlyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "999172994485-qlr75l1a0r7905ntndninc98ugam9g6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuJYv5ENx9aeQdFRnLtohnU70OL0XRtN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "999172994485-qlr75l1a0r7905ntndninc98ugam9g6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
