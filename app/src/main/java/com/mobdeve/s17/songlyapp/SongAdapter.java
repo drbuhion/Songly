@@ -14,7 +14,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
 
     private ArrayList<Song> SongData;
 
-    public SongAdapter(ArrayList<Song> SongData){ this.SongData = SongData; }
+    private RecyclerViewClickListener listener;
+
+    public SongAdapter(ArrayList<Song> SongData, RecyclerViewClickListener listener){
+        this.SongData = SongData;
+        this.listener = listener;
+    }
 
     public void setData(ArrayList<Song> SongData){
         this.SongData.clear();
@@ -28,7 +33,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.song_view, parent, false);
 
-        SongViewHolder songViewHolder = new SongViewHolder(itemView);
+        SongViewHolder songViewHolder = new SongViewHolder(itemView, this.listener);
 
         return songViewHolder;
     }
@@ -40,6 +45,10 @@ public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
         holder.setArtist(SongData.get(position).getArtist());
         holder.setYear(SongData.get(position).getYear());
         holder.setAlbum(SongData.get(position).getAlbum());
+    }
+
+    public interface RecyclerViewClickListener {
+        void onClick(View v, int position);
     }
 
     @Override

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     private ArrayList<Song> songData;
     private RecyclerView rvPosts;
+    private SongAdapter.RecyclerViewClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,22 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         this.songData = helper.loadSongData();
         this.rvPosts = findViewById(R.id.rv);
 
+        setOnClickListener();
+
         this.rvPosts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        this.rvPosts.setAdapter(new SongAdapter(this.songData));
+        this.rvPosts.setAdapter(new SongAdapter(this.songData, this.listener));
+    }
+
+    private void setOnClickListener() {
+        listener = new SongAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent = new Intent(getApplicationContext(), Player.class);
+                intent.putExtra("title",songData.get(position).getTitle());
+                intent.putExtra("artist",songData.get(position).getArtist());
+                startActivity(intent);
+            }
+        };
     }
 
     private void initNav(){

@@ -8,12 +8,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SongViewHolder extends RecyclerView.ViewHolder {
+public class SongViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private ImageView dp;
     private TextView title, artist, year, album;
+    private SongAdapter.RecyclerViewClickListener listener;
 
-    public SongViewHolder(@NonNull View itemView) {
+    public SongViewHolder(@NonNull View itemView, SongAdapter.RecyclerViewClickListener listener) {
         super(itemView);
 
         this.dp = itemView.findViewById(R.id.dp);
@@ -21,6 +22,10 @@ public class SongViewHolder extends RecyclerView.ViewHolder {
         this.artist = itemView.findViewById(R.id.artist);
         this.year = itemView.findViewById(R.id.date);
         this.album = itemView.findViewById(R.id.album);
+
+        this.listener = listener;
+
+        itemView.setOnClickListener(this);
 
     }
 
@@ -34,4 +39,8 @@ public class SongViewHolder extends RecyclerView.ViewHolder {
 
     public void setAlbum(String album) { this.album.setText(album); }
 
+    @Override
+    public void onClick(View view) {
+        listener.onClick(view, getAdapterPosition());
+    }
 }
