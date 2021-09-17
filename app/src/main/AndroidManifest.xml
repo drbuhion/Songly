@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Songly">
-        <activity android:name=".Player"></activity>
+        <activity
+            android:name=".ViewPlaylistActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Playlist"
+            android:exported="true" />
+        <activity android:name=".Player" />
         <activity android:name=".SearchSong" />
         <activity android:name=".UploadSong" />
         <activity android:name=".Login">
