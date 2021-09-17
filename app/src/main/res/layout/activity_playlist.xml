@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Playlist">
+
+    <ImageButton
+        android:id="@+id/S1001"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/planet_her" />
+
+    <ImageButton
+        android:id="@+id/s"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="5dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toEndOf="@+id/txtArtist1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/after_hours" />
+
+    <TextView
+        android:id="@+id/txtTitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Need To Know"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/S1001"
+        app:layout_constraintTop_toTopOf="@+id/S1001" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Blinding Lights"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s"
+        app:layout_constraintTop_toTopOf="@+id/s" />
+
+    <TextView
+        android:id="@+id/txtArtist1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Doja Cat"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/S1001"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle1" />
+
+
+    <TextView
+        android:id="@+id/txtArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="8dp"
+        android:text="The Weekend"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/S1001"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+    <Button
+        android:id="@+id/add1"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="S1001"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/S1001"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist1"/>
+
+    <Button
+        android:id="@+id/add4"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist" />
+
+    <ImageButton
+        android:id="@+id/S1002"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/S1001"
+        app:layout_constraintTop_toBottomOf="@+id/S1001"
+        app:srcCompat="@drawable/butter" />
+
+
+    <ImageButton
+        android:id="@+id/s2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/s"
+        app:layout_constraintTop_toBottomOf="@+id/s"
+        app:srcCompat="@drawable/sour" />
+
+    <TextView
+        android:id="@+id/txtTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Butter"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/S1002"
+        app:layout_constraintTop_toTopOf="@+id/S1002" />
+
+    <TextView
+        android:id="@+id/txtTitle4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="driver license"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s2"
+        app:layout_constraintTop_toTopOf="@+id/s2" />
+
+    <TextView
+        android:id="@+id/txtArtist2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="BTS"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/S1002"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle2" />
+
+    <TextView
+        android:id="@+id/txtArtist4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Olivia Rodrigo"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/s2"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle4" />
+
+    <Button
+        android:id="@+id/add2"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="S1002"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/S1002"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist2" />
+
+
+    <Button
+        android:id="@+id/add5"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s2"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s2"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist4" />
+
+    <ImageButton
+        android:id="@+id/S1003"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:onClick="handleSelection"
+        app:layout_constraintStart_toStartOf="@+id/S1002"
+        app:layout_constraintTop_toBottomOf="@+id/S1002"
+        app:srcCompat="@drawable/bad_habits" />
+
+
+    <ImageButton
+        android:id="@+id/s4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/S1003"
+        app:layout_constraintTop_toBottomOf="@+id/S1003"
+        app:srcCompat="@drawable/happier_ever" />
+
+    <ImageButton
+        android:id="@+id/s6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/s4"
+        app:layout_constraintTop_toBottomOf="@+id/s4"
+        app:srcCompat="@drawable/future_nostalgia" />
+
+    <ImageButton
+        android:id="@+id/s7"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/s6"
+        app:layout_constraintTop_toBottomOf="@+id/s6"
+        app:srcCompat="@drawable/sour" />
+
+    <ImageButton
+        android:id="@+id/s8"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/s7"
+        app:layout_constraintTop_toBottomOf="@+id/s7"
+        app:srcCompat="@drawable/planet_her" />
+
+    <ImageButton
+        android:id="@+id/s3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/s2"
+        app:layout_constraintTop_toBottomOf="@+id/s2"
+        app:srcCompat="@drawable/wild_side" />
+
+    <ImageButton
+        android:id="@+id/s5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/s3"
+        app:layout_constraintTop_toBottomOf="@+id/s3"
+        app:srcCompat="@drawable/watermelon_sugar" />
+
+    <ImageButton
+        android:id="@+id/s9"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/s5"
+        app:layout_constraintTop_toBottomOf="@+id/s5"
+        app:srcCompat="@drawable/carnival" />
+
+    <ImageButton
+        android:id="@+id/s10"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="handleSelection"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/s9"
+        app:layout_constraintTop_toBottomOf="@+id/s9"
+        app:srcCompat="@drawable/over_you" />
+
+    <TextView
+        android:id="@+id/txtTitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Bad Habits"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/S1003"
+        app:layout_constraintTop_toTopOf="@+id/S1003" />
+
+
+    <TextView
+        android:id="@+id/txtTitle6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Happier Than Ever"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s4"
+        app:layout_constraintTop_toTopOf="@+id/s4" />
+
+    <TextView
+        android:id="@+id/txtTitle8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Levitating"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s6"
+        app:layout_constraintTop_toBottomOf="@+id/add7" />
+
+    <TextView
+        android:id="@+id/txtTitle9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="traitor"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s7"
+        app:layout_constraintTop_toBottomOf="@+id/add9" />
+
+    <TextView
+        android:id="@+id/txtTitle10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Woman"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s8"
+        app:layout_constraintTop_toBottomOf="@+id/add10" />
+
+    <TextView
+        android:id="@+id/txtTitle5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Wild Side"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s3"
+        app:layout_constraintTop_toBottomOf="@+id/add5" />
+
+    <TextView
+        android:id="@+id/txtTitle7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Watermelon Sugar"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/s5"
+        app:layout_constraintTop_toBottomOf="@+id/add6" />
+
+    <TextView
+        android:id="@+id/txtTitle11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:text="FEVER"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s9"
+        app:layout_constraintTop_toBottomOf="@+id/add8" />
+
+    <TextView
+        android:id="@+id/txtTitle12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="9dp"
+        android:text="STAY"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/s10"
+        app:layout_constraintTop_toBottomOf="@+id/add12" />
+
+    <TextView
+        android:id="@+id/txtArtist3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Ed Sheeran"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/S1003"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle3" />
+
+    <TextView
+        android:id="@+id/txtArtist6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Billie Eilish"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/s4"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle6" />
+
+    <TextView
+        android:id="@+id/txtArtist8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Dua Lipa"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/s6"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle8" />
+
+    <TextView
+        android:id="@+id/txtArtist9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Olivia Rodrigo"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/s7"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle9" />
+
+    <TextView
+        android:id="@+id/txtArtist10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Doja Cat"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/s8"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle10" />
+
+    <TextView
+        android:id="@+id/txtArtist7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Harry Styles"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/s5"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle7" />
+
+    <TextView
+        android:id="@+id/txtArtist11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="ENHYPHEN"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/s9"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle11" />
+
+    <TextView
+        android:id="@+id/txtArtist12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="The kid LAROI, Justin Bieber"
+        android:textSize="7sp"
+        app:layout_constraintStart_toEndOf="@+id/s10"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle12" />
+
+    <TextView
+        android:id="@+id/txtArtist5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Normani, Cardi B"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/s3"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle5" />
+
+    <Button
+        android:id="@+id/add3"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="S1003"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/S1003"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist3" />
+
+
+    <Button
+        android:id="@+id/add7"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s4"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s4"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist6" />
+
+    <Button
+        android:id="@+id/add9"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s6"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s6"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist8" />
+
+    <Button
+        android:id="@+id/add10"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s7"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s7"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist9" />
+
+    <Button
+        android:id="@+id/add11"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s8"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s8"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist10" />
+
+    <Button
+        android:id="@+id/add8"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s5"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s5"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist7" />
+
+    <Button
+        android:id="@+id/add12"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s9"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s9"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist11" />
+
+    <Button
+        android:id="@+id/add13"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s10"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s10"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist12" />
+
+    <Button
+        android:id="@+id/add6"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="s3"
+        android:onClick="addToPlaylist"
+        android:text="Add to playlist"
+        android:textSize="6dp"
+        app:layout_constraintStart_toEndOf="@+id/s3"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist5" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:onClick="ViewPlaylist"
+        android:text="View Playlist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
