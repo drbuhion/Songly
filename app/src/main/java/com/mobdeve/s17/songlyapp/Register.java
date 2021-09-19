@@ -77,8 +77,8 @@ public class Register extends AppCompatActivity {
                 String femail = email.getText().toString().trim();
                 String fpassword = password.getText().toString().trim();
 
-                String ffullname = fullname.getText().toString();
-                String fbday = birthday.getText().toString();
+                //String ffullname = fullname.getText().toString();
+                //String fbday = birthday.getText().toString();
 
                 String ffullname = fullname.getText().toString().trim();
                 String fbday = birthday.getText().toString().trim();

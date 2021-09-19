@@ -134,6 +134,7 @@ public class ViewPlaylistActivity extends AppCompatActivity implements EditDialo
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public void ClearPlaylist(View view) {

@@ -39,9 +39,9 @@ public class EditDialog extends AppCompatDialogFragment {
     FirebaseFirestore fStore;
     String userID;
 
-    private TextView txtplaylistname;
-    private TextView txtdesx;
-    SharedPreferences prefs;
+    //private TextView txtplaylistname;
+    //private TextView txtdesx;
+    //SharedPreferences prefs;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

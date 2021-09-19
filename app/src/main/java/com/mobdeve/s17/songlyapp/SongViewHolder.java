@@ -46,6 +46,6 @@ public class SongViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        listener.onClick(view, getAdapterPosition());
+           listener.onClick(view,getAdapterPosition());
     }
 }

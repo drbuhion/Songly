@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     DatabaseReference databaseReference;
     ValueEventListener valueEventListener;
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences pref;
+    //SharedPreferences sharedPreferences;
+    //SharedPreferences pref;
 
 
     @Override
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnItemSelectedListener(navListener);
         this.initNav();
+        this.initComponents();
         
         playlist_name = findViewById(R.id.playlist_name);
         playlist_description = findViewById(R.id.description);
@@ -78,14 +79,9 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
         sharedPreferences = getSharedPreferences("MY_DATA", MODE_PRIVATE);
         pref = getSharedPreferences("playList", MODE_PRIVATE);
-             
 
         setOnClickListener();
-
-        rvPosts = findViewById(R.id.rv);
         this.songAdapter = new SongAdapter(MainActivity.this, this.songData, this.listener);
-        this.rvPosts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        this.rvPosts.setAdapter(songAdapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("songs");
 
@@ -107,6 +103,13 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 Toast.makeText(getApplicationContext(),""+error.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
+
+
+        rvPosts = findViewById(R.id.rv);
+        this.rvPosts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        this.rvPosts.setAdapter(songAdapter);
+
+
     }
 
     protected void onDestroy() {

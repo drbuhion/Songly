@@ -48,8 +48,8 @@ public class Playlist extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(userId, MODE_PRIVATE);
         String albums = sharedPreferences.getString("list", "");
 
-        sharedPreferences = getSharedPreferences("playList", MODE_PRIVATE);
-        String albums = sharedPreferences.getString("list", "");
+        //sharedPreferences = getSharedPreferences("playList", MODE_PRIVATE);
+        //String albums = sharedPreferences.getString("list", "");
 
         if(!albums.equals("")){
             TypeToken<ArrayList<Song>> token = new TypeToken<ArrayList<Song>>(){};
