@@ -19,15 +19,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.mobdeve.s17.songlyapp.fragments.HomeFragment;
+import com.mobdeve.s17.songlyapp.model.addSong;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
-    private ArrayList<Song> songData;
+    private ArrayList<addSong> songData;
     private RecyclerView rvPosts;
     private SongAdapter.RecyclerViewClickListener listener;
+    private SongAdapter songAdapter;
+
+    FirebaseStorage mStorage;
+    DatabaseReference databaseReference;
+    ValueEventListener valueEventListener;
+
     SharedPreferences sharedPreferences;
     SharedPreferences pref;
 
@@ -43,18 +58,48 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
         sharedPreferences = getSharedPreferences("MY_DATA", MODE_PRIVATE);
         pref = getSharedPreferences("playList", MODE_PRIVATE);
-        }
+
+        setOnClickListener();
+
+        rvPosts = findViewById(R.id.rv);
+        this.songAdapter = new SongAdapter(MainActivity.this, this.songData, this.listener);
+        this.rvPosts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        this.rvPosts.setAdapter(songAdapter);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("songs");
+
+        valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                songData.clear();
+                for (DataSnapshot dss:snapshot.getChildren()) {
+                    addSong songs = dss.getValue(addSong.class);
+                    songs.setmKey(dss.getKey());
+                    songData.add(songs);
+
+                    songAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),""+error.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+
+        databaseReference.removeEventListener(valueEventListener);
+
+    }
 
     private void initComponents(){
         DataHelper helper = new DataHelper();
 
         this.songData = helper.loadSongData();
-        this.rvPosts = findViewById(R.id.rv);
-
-        setOnClickListener();
-
-        this.rvPosts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        this.rvPosts.setAdapter(new SongAdapter(this.songData, this.listener));
+        //this.rvPosts = findViewById(R.id.rv);
     }
 
     private void setOnClickListener() {
@@ -62,8 +107,9 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             @Override
             public void onClick(View v, int position) {
                 Intent intent = new Intent(getApplicationContext(), Player.class);
-                intent.putExtra("title",songData.get(position).getTitle());
+                intent.putExtra("title",songData.get(position).getSongTitle());
                 intent.putExtra("artist",songData.get(position).getArtist());
+                intent.putExtra("songLink",songData.get(position).getSongLink());
                 startActivity(intent);
             }
         };

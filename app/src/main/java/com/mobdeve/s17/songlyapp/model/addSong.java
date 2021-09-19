@@ -3,6 +3,8 @@ package com.mobdeve.s17.songlyapp.model;
 public class addSong {
     public String songTitle, artist, album_art, songDuration, songLink, mKey;
 
+    public addSong(){};
+
     public addSong (String songTitle, String artist, String songDuration, String songLink) {
 
         if(songTitle.equals("")) {
