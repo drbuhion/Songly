@@ -3,15 +3,18 @@ package com.mobdeve.s17.songlyapp.model;
 public class addSong {
     public String songTitle, artist, album_art, songDuration, songLink, mKey;
 
-    public addSong (String songTitle, String artist, String album_art, String songDuration, String songLink) {
+    public addSong (String songTitle, String artist, String songDuration, String songLink) {
 
-        if(songTitle.trim().equals("")) {
-            songTitle = "No title";
+        if(songTitle.equals("")) {
+            songTitle = "Unknown";
+        }
+
+        if(artist.equals("")) {
+            artist = "Unknown";
         }
 
         this.songTitle = songTitle;
         this.artist = artist;
-        this.album_art = album_art;
         this.songDuration = songDuration;
         this.songLink = songLink;
     }
