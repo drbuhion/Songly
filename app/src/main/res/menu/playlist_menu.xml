@@ -2,5 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/playlist_settings"
-        android:title="Create Playlist" />
+        android:title="Playlist" />
+    <item
+        android:id="@+id/logout"
+        android:title="Logout" />
 </menu>
