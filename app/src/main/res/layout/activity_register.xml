@@ -67,7 +67,7 @@
         android:ems="10"
         android:hint="@string/date_of_birth"
         android:autofillHints="@string/date_of_birth"
-        android:inputType="text|date"
+        android:inputType="numberSigned"
         android:padding="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -137,6 +137,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegisButton"
         app:layout_constraintVertical_bias="0.183" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/Log"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
