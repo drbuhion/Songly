@@ -13,6 +13,8 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f535402a-13b9-40a4-8827-43210038b69f" name="Default Changelist" comment="" />
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -54,6 +56,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[21b854888a0d7ece]" />
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\drbuh\.android\avd\Pixel_3a_API_30_x86.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -70,6 +73,7 @@
       </list>
     </option>
   </component>
+    
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -78,6 +82,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+
   <component name="ProjectId" id="1xE5d5DDeAWkwecOYs6wtHneZVC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -85,16 +90,27 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Dependencies" />
+
     <property name="android-custom-viewC:/Users/drbuh/AppData/Local/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="project.structure.last.edited" value="Project" />
+
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Default Config" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
+
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
@@ -103,26 +119,43 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Users\drbuh\Desktop\initial-merge\l\app\src\main\res\drawable" />
+
       <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app\src\main\res\drawable" />
       <recent name="C:\Users\Dell\AndroidStudioProjects\Songly" />
       <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app\src\main\res\menu" />
       <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app\src\main\res\layout" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app" />
-      <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app\src\main\res\drawable" />
-      <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app\src\main\res\drawable-v24" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.mobdeve.s17.songlyapp" />
-      <recent name="com.mobdeve.s17.songlyapp.model" />
+
+      <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app\src\main\java\com\mobdeve\s17\songlyapp" />
     </key>
     <key name="android.template.-1604474383">
       <recent name="com.mobdeve.s17.songlyapp" />
     </key>
     <key name="android.template.-1982853505">
       <recent name="com.mobdeve.s17.songlyapp" />
+
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app" />
+      <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app\src\main\res\drawable" />
+      <recent name="C:\Users\Dell\AndroidStudioProjects\Songly\app\src\main\res\drawable-v24" />
+    </key>
+
+    <key name="android.template.158398481">
+      <recent name="com.mobdeve.s17.songlyapp" />
+    </key>
+
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mobdeve.s17.songlyapp" />
+      <recent name="com.mobdeve.s17.songlyapp.model" />
+    </key>
+
+    <key name="android.template.-1604474383">
+      <recent name="com.mobdeve.s17.songlyapp" />
+    </key>
+    <key name="android.template.-1982853505">
+      <recent name="com.mobdeve.s17.songlyapp" />
+    </key>
+
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -202,6 +235,7 @@
     </task>
     <servers />
   </component>
+
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -248,6 +282,7 @@
     </state>
     <state x="452" y="138" key="chooseDestDirectoryDialog/0.0.1280.720@0.0.1280.720" timestamp="1632060204880" />
   </component>
+
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -258,7 +293,10 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/mobdeve/s17/songlyapp/Player.java</url>
+
+          <line>42</line>
           <line>57</line>
+
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

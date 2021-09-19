@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.mobdeve.s17.songlyapp.fragments.HomeFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +33,7 @@ import com.mobdeve.s17.songlyapp.model.addSong;
 
 import org.jetbrains.annotations.NotNull;
 
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
@@ -37,6 +41,14 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     private ArrayList<addSong> songData;
     private RecyclerView rvPosts;
     private SongAdapter.RecyclerViewClickListener listener;
+    SharedPreferences sharedPreferences;
+    SharedPreferences pref;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userId;
+    TextView playlist_name;
+    TextView playlist_description;
+
     private SongAdapter songAdapter;
 
     FirebaseStorage mStorage;
@@ -46,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     SharedPreferences sharedPreferences;
     SharedPreferences pref;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +67,18 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnItemSelectedListener(navListener);
         this.initNav();
-        this.initComponents();
+        
+        playlist_name = findViewById(R.id.playlist_name);
+        playlist_description = findViewById(R.id.description);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        userId = fAuth.getCurrentUser().getUid();
 
         sharedPreferences = getSharedPreferences("MY_DATA", MODE_PRIVATE);
         pref = getSharedPreferences("playList", MODE_PRIVATE);
+             
 
         setOnClickListener();
 
@@ -163,12 +184,14 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                SharedPreferences.Editor editor1 = pref.edit();
-                editor1.clear();
-                editor.clear();
-                editor1.clear();
-                editor.apply();
+
+                //SharedPreferences.Editor editor = sharedPreferences.edit();
+                //SharedPreferences.Editor editor1 = pref.edit();
+                //editor1.clear();
+                //editor.clear();
+                //editor1.clear();
+                //editor.apply();
+
                 Toast.makeText(MainActivity.this,"Logged out successfully", Toast.LENGTH_SHORT).show();
                 finish();
 

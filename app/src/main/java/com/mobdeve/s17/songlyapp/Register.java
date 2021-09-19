@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,11 +17,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
@@ -29,7 +37,8 @@ public class Register extends AppCompatActivity {
     Button regis;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
-
+    FirebaseFirestore fStore;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +54,7 @@ public class Register extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
 
         fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         //if user is already logged in
         if(fAuth.getCurrentUser() != null) {
@@ -66,8 +76,13 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String femail = email.getText().toString().trim();
                 String fpassword = password.getText().toString().trim();
+
+                String ffullname = fullname.getText().toString();
+                String fbday = birthday.getText().toString();
+
                 String ffullname = fullname.getText().toString().trim();
                 String fbday = birthday.getText().toString().trim();
+
 
                 if(TextUtils.isEmpty(ffullname)){
                     fullname.setError("Full Name is Required.");
@@ -104,6 +119,25 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
+
+                            userID = fAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = fStore.collection("users").document(userID);
+                            Map<String,Object> user = new HashMap<>();
+                            user.put("fName", ffullname);
+                            user.put("email", femail);
+                            user.put("bday",fbday);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.d("TAG", "onSuccess: user Profile is created for" + userID);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d("TAG", "onFailure: " + e.toString());
+                                }
+                            });
+
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         } else{

@@ -18,6 +18,11 @@ import com.mobdeve.s17.songlyapp.model.addSong;
 import java.io.IOException;
 import java.util.Random;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import java.util.Random;
+
 public class Player extends AppCompatActivity {
 
     Button button;

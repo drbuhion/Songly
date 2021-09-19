@@ -15,7 +15,6 @@ public class DataHelper {
         data.add(new addSong("Sample Music 2",
                 "Artist2","00:00", "link"));
 
-
         return data;
     }
 }

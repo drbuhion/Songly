@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,13 +31,26 @@ public class Playlist extends AppCompatActivity {
     EditText Description;
     Button button;
 
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playlist);
 
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        userId = fAuth.getCurrentUser().getUid();
+
+        sharedPreferences = getSharedPreferences(userId, MODE_PRIVATE);
+        String albums = sharedPreferences.getString("list", "");
+
         sharedPreferences = getSharedPreferences("playList", MODE_PRIVATE);
         String albums = sharedPreferences.getString("list", "");
+
         if(!albums.equals("")){
             TypeToken<ArrayList<Song>> token = new TypeToken<ArrayList<Song>>(){};
             Gson gson = new Gson();
