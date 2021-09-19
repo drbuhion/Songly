@@ -3,12 +3,16 @@ package com.mobdeve.s17.songlyapp;
 import java.io.Serializable;
 
 public class Song implements Serializable {
-    private String title, artist, album;
+
+
+
+    private String id, title, artist, album;
     private int year, imageId;
 
 
 
-    public Song(String title, String artist, String album, int year, int imageId) {
+    public Song(String id, String title, String artist, String album, int year, int imageId) {
+        this.id = id;
         this.title = title;
         this.artist = artist;
         this.album = album;
@@ -16,6 +20,13 @@ public class Song implements Serializable {
         this.imageId = imageId;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
