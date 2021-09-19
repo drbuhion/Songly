@@ -14,9 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -46,6 +46,9 @@ public class Playlist extends AppCompatActivity {
         userId = fAuth.getCurrentUser().getUid();
 
         sharedPreferences = getSharedPreferences(userId, MODE_PRIVATE);
+        String albums = sharedPreferences.getString("list", "");
+
+        sharedPreferences = getSharedPreferences("playList", MODE_PRIVATE);
         String albums = sharedPreferences.getString("list", "");
 
         if(!albums.equals("")){
@@ -79,6 +82,11 @@ public class Playlist extends AppCompatActivity {
         editor.putString("list", json);
         editor.apply();
         Toast.makeText(this, "Added to Playlist", Toast.LENGTH_SHORT).show();
+    }
+
+    public void Playlist(View view) {
+
+
     }
 
 }

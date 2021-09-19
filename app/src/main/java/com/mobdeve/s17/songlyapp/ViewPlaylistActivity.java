@@ -4,6 +4,7 @@ import static com.mobdeve.s17.songlyapp.Playlist.playList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.gson.Gson;
 import com.squareup.okhttp.internal.DiskLruCache;
+import com.google.gson.Gson;
+
 
 import org.w3c.dom.Text;
 
@@ -48,11 +51,14 @@ public class ViewPlaylistActivity extends AppCompatActivity implements EditDialo
     FirebaseFirestore fStore;
     String userId;
 
+    public static SharedPreferences prefs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_playlist);
+
         playlist_name = findViewById(R.id.playlist_name);
         playlist_description = findViewById(R.id.description);
         PlaylistName = findViewById(R.id.edit_playlistname);
@@ -128,7 +134,6 @@ public class ViewPlaylistActivity extends AppCompatActivity implements EditDialo
             default:
                 return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     public void ClearPlaylist(View view) {

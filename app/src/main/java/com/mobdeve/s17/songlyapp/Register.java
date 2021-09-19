@@ -76,8 +76,13 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String femail = email.getText().toString().trim();
                 String fpassword = password.getText().toString().trim();
+
                 String ffullname = fullname.getText().toString();
                 String fbday = birthday.getText().toString();
+
+                String ffullname = fullname.getText().toString().trim();
+                String fbday = birthday.getText().toString().trim();
+
 
                 if(TextUtils.isEmpty(ffullname)){
                     fullname.setError("Full Name is Required.");
@@ -114,6 +119,7 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this, "Registered successfully.", Toast.LENGTH_SHORT).show();
+
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("users").document(userID);
                             Map<String,Object> user = new HashMap<>();
@@ -131,6 +137,7 @@ public class Register extends AppCompatActivity {
                                     Log.d("TAG", "onFailure: " + e.toString());
                                 }
                             });
+
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         } else{

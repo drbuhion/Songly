@@ -21,6 +21,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -42,8 +45,11 @@ public class UploadSong extends AppCompatActivity {
     MediaMetadataRetriever metadataRetriever;
     byte [] art;
     String sTitle, sArtist, sAlbum_art = "", sDuration, sData, sAlbum;
-    TextView title, artist, album, duration, dataa;
-    ImageView album_art;
+    //TextView title, artist, album;
+    TextView duration, dataa;
+    TextInputEditText title, artist;
+    //ImageView album_art;
+
 
 
     @Override
@@ -53,13 +59,16 @@ public class UploadSong extends AppCompatActivity {
 
         filename = findViewById(R.id.tv_filename);
         progressBar = findViewById(R.id.pb_UploadStatus);
-        title = findViewById(R.id.tv_new_title);
-        artist = findViewById(R.id.tv_new_artist);
-        album = findViewById(R.id.tv_new_album);
+        //title = findViewById(R.id.tv_new_title);
+        //artist = findViewById(R.id.tv_new_artist);
+        //album = findViewById(R.id.tv_new_album);
         duration = findViewById(R.id.tv_new_duration);
         dataa = findViewById(R.id.tv_new_data);
-        album_art = findViewById(R.id.iv_new_picture);
+        //album_art = findViewById(R.id.iv_new_picture);
         Button back_home = findViewById(R.id.btn_us_back);
+
+        title = findViewById(R.id.input_title);
+        artist = findViewById(R.id.input_artist);
 
         metadataRetriever = new MediaMetadataRetriever();
         referenceSongs = FirebaseDatabase.getInstance().getReference().child("songs");
@@ -71,6 +80,7 @@ public class UploadSong extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
+                onDestroy();
             }
         });
 
@@ -93,17 +103,19 @@ public class UploadSong extends AppCompatActivity {
             filename.setText(fName);
             metadataRetriever.setDataSource(this,audioUri);
 
-            art = metadataRetriever.getEmbeddedPicture();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(art,0,art.length);
-            album_art.setImageBitmap(bitmap);
-            album.setText(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
-            artist.setText(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+            //art = metadataRetriever.getEmbeddedPicture();
+            //Bitmap bitmap = BitmapFactory.decodeByteArray(art,0,art.length);
+            //album_art.setImageBitmap(bitmap);
+            //album.setText(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
+            //artist.setText(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
             dataa.setText(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE));
             duration.setText(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
-            title.setText(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE));
+            //title.setText(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE));
 
-            sTitle = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-            sArtist = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+            //sTitle = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+            //sArtist = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+            sTitle = title.getText().toString();
+            sArtist = artist.getText().toString();
             sDuration = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
 
         }
@@ -149,26 +161,23 @@ public class UploadSong extends AppCompatActivity {
             Toast.makeText(this,"uploading, please wait", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.VISIBLE);
             final StorageReference storageReference = mStorageref.child(System.currentTimeMillis()+"."+getFileExtenstion(audioUri));
-            mUploadTask = storageReference.putFile(audioUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            mUploadTask = storageReference.putFile(audioUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
-                        public void onSuccess(Uri uri) {
-                            addSong addSong = new addSong(sTitle, sArtist, sAlbum_art, sDuration, uri.toString());
-                            String uploadId = referenceSongs.push().getKey();
-                            referenceSongs.child(uploadId).setValue(addSong);
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                addSong newSong = new addSong(sTitle, sArtist, sDuration, audioUri.toString());
+                                String uploadId = referenceSongs.push().getKey();
+                                referenceSongs.child(uploadId).setValue(newSong);
+                        }
+
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot snapshot) {
+                            double progress = (100.0 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
+                            progressBar.setProgress((int) progress);
                         }
                     });
-                }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(UploadTask.TaskSnapshot snapshot) {
-                    double progress = (100.0 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
-                    progressBar.setProgress((int) progress);
-                }
-            });
         }else {
             Toast.makeText(this,"No file selected to upload", Toast.LENGTH_SHORT).show();
         }
